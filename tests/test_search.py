@@ -1,17 +1,17 @@
 from playwright.sync_api import Page, expect
+from pages.search import DuckDuckGoSearchPage
+from pages.results import DuckDuckGoResultsPage
 
 def test_basic_duckduckgo_search(page: Page) -> None:
-    page.goto("https://duckduckgo.com/")
-    page.locator("#searchbox_input").fill("cheese")
-    # page.locator("#gNO89b").click()
-    page.locator(".searchbox_searchButton__LxebD").click()
-    # Then the search result query is the phrase
-    expect(page.locator("#search_form_input")).to_have_value("cheese")
+    search_page = DuckDuckGoSearchPage(page)
+    results_page = DuckDuckGoResultsPage(page)
+    #Given I navigate to duckduckgo
+    search_page.load()
+    #And I search for "cheese"
+    search_page.search("cheese")
+    # Then the search result query is the phrase we searched for
+    expect(results_page.search_input).to_have_value("cheese")
     # And the search result links pertain to the phrase
-    page.locator('a[data-testid="result-title-a"]').nth(4).wait_for()
-    titles = page.locator('a[data-testid="result-title-a"]').all_text_contents()
-    matches = [t for t in titles if "cheese" in t.lower()] 
-    assert len(matches) > 0
+    assert results_page.check_list_of_links_contains_phrase("cheese")
     # And the search result title contains the phrase
     expect(page).to_have_title('cheese at DuckDuckGo')
-    pass
