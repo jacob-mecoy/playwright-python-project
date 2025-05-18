@@ -1,0 +1,1 @@
+Simple automation UI project for interacting with web UI using python, playwright, pytest. Currently interacting with duckduckgo.com
