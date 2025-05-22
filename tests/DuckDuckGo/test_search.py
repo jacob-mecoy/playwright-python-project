@@ -1,6 +1,6 @@
 from playwright.sync_api import Page, expect
-from pages.search import DuckDuckGoSearchPage
-from pages.results import DuckDuckGoResultsPage
+from pages.DuckDuckGo.search import DuckDuckGoSearchPage
+from pages.DuckDuckGo.results import DuckDuckGoResultsPage
 
 def test_basic_duckduckgo_search(
     page: Page,

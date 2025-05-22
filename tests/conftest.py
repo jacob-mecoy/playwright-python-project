@@ -1,7 +1,7 @@
 import pytest
 
-from pages.results import DuckDuckGoResultsPage
-from pages.search import DuckDuckGoSearchPage
+from pages.DuckDuckGo.search import DuckDuckGoSearchPage
+from pages.DuckDuckGo.results import DuckDuckGoResultsPage
 from playwright.sync_api import Page
 
 @pytest.fixture
