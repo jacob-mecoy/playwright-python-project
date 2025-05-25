@@ -1,1 +1,3 @@
-Simple automation UI project for interacting with web UI using python, playwright, pytest. Currently interacting with duckduckgo.com
+Test automation web UI & API project using python, playwright & pytest. Implements page object model practice for code structure. 
+
+Currently interacting with https://rickandmortyapi.com/ & https://duckduckgo.com
