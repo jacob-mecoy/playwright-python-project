@@ -1,6 +1,6 @@
 ## What is this project?
 
-A test automation web UI & API project using python, playwright & pytest. These tests currently interact with 2 websites - https://rickandmortyapi.com/ & https://duckduckgo.com. It implements the "page object model" practice for code structure. 
+A test automation web UI & API project using python, playwright & pytest. These tests currently interact with 3 websites - https://rickandmortyapi.com/, https://www.automationexercise.com/ & https://duckduckgo.com. It implements the "page object model" practice for code structure. 
 
 ## Project setup
 
