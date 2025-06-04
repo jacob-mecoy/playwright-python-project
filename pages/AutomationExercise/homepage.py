@@ -1,0 +1,13 @@
+from playwright.sync_api import Page
+
+class AutomationExerciseHomepage:
+
+    URL = "https://www.automationexercise.com/"
+
+    def __init__(self, page: Page):
+        self.page = page
+        self.consent = page.get_by_role("button", name="Consent")
+        self.signup = page.get_by_text("Signup / Login")
+    
+    def load(self):
+        self.page.goto(self.URL)
