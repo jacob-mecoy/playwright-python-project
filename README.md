@@ -13,6 +13,7 @@ All the commands below are written to be run within cmd.
 - activate the virtual environment with `venv\Scripts\activate.bat`
 - Add required packages to your venv by running `pip install -r requirements.txt`
 - To download the browsers that Playwright can run tests with, run `playwright install`
+- Some of the tests rely on importing environment variables. Therefore you will need to create a `.env` file in the project root with the required key:value pairs
 
 ## Running the tests
 

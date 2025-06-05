@@ -1,4 +1,6 @@
-from playwright.sync_api import Page, expect
+import os
+from dotenv import load_dotenv
+from playwright.sync_api import expect
 import random
 import string
 
@@ -22,10 +24,10 @@ def test_register_user(ae_homepage: AutomationExerciseHomepage, ae_login_page: A
     
     ae_homepage.load()
     ae_homepage.consent.click() #Chrome - consent to data use
-    ae_homepage.signup.click()
+    ae_homepage.signup_login_link.click()
 
     ae_login_page.enter_signup_info(first_name, last_name, email_address)
-    ae_login_page.signup.click()
+    ae_login_page.signup_button.click()
 
     expect(ae_signup_page.name).to_have_value(full_name)
     expect(ae_signup_page.email).to_have_value(email_address)
@@ -37,3 +39,16 @@ def test_register_user(ae_homepage: AutomationExerciseHomepage, ae_login_page: A
     ae_account_confirm_page.continue_button.click()
     #Verify we are returned to the homepage
     assert ae_homepage.page.title() == "Automation Exercise"
+
+def test_login_user(ae_homepage: AutomationExerciseHomepage, ae_login_page: AutomationExerciseLogin) -> None:
+    ae_homepage.load()
+    ae_homepage.consent.click() #Chrome - consent to data use
+    ae_homepage.signup_login_link.click()
+
+    load_dotenv()
+    ae_login_page.enter_login_info(os.getenv("USER_EMAIL"), os.getenv("USER_PASSWORD"))
+    ae_login_page.login_button.click()
+
+    #Verify we are returned to the homepage
+    assert ae_homepage.page.title() == "Automation Exercise"
+    expect(ae_homepage.logged_in_message).to_have_text(f"Logged in as {os.getenv("USER_FIRST_NAME")}")
