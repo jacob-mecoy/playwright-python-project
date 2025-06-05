@@ -11,11 +11,8 @@ All the commands below are written to be run within cmd.
 - Move into the project directory - `cd playwright-python-project`
 - Create a virtual environment to manage the dependency packages locally - `py -m venv venv`
 - activate the virtual environment with `venv\Scripts\activate.bat`
-- Add the following packages to your venv using the following commands
-  - `pip3 install playwright`
-  - `pip3 install pytest`
-  - `pip3 install pytest-playwright`
-- To download the browsers that Playwright can run tests with, run `playwright install` 
+- Add required packages to your venv by running `pip install -r requirements.txt`
+- To download the browsers that Playwright can run tests with, run `playwright install`
 
 ## Running the tests
 
