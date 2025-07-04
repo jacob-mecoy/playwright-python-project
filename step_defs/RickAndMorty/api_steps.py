@@ -1,0 +1,37 @@
+import pytest
+from pytest_bdd import given, then, parsers
+from playwright.sync_api import Page, expect
+
+from pages.RickAndMorty.api import RickAndMortyAPI
+
+@pytest.fixture()
+def api() -> RickAndMortyAPI:
+    return RickAndMortyAPI()
+
+@given("I get all characters using the character API")
+def get_all_characters(api: RickAndMortyAPI, page: Page):
+    api.response = page.request.get("https://rickandmortyapi.com/api/character")
+
+@given("I get a single character via id")
+def get_one_character(api: RickAndMortyAPI, page: Page):
+    api.response = page.request.get("https://rickandmortyapi.com/api/character/1")
+
+@given("I get characters that match specific filters")
+def get_characters_using_filters(api: RickAndMortyAPI, page: Page):
+    api.response = page.request.get("https://rickandmortyapi.com/api/character", params={"name":"rick", "status":"alive"})
+
+@then("the response is ok")
+def verify_response_is_ok(api: RickAndMortyAPI):
+    expect(api.response).to_be_ok()
+
+@then(parsers.parse("the response contains only {number_of_characters:d} character"))
+@then(parsers.parse("the response contains {number_of_characters:d} characters"))
+def verify_response_contains_characters(api: RickAndMortyAPI, number_of_characters: int):
+    if number_of_characters == 1:
+        #verify that multiple characters are not returned by verifying a list is not returned
+        assert type(api.response.json()) == dict
+        #verify that one characters is returned by verifying the "info" key is not present in the response
+        assert "info" not in api.response.json().keys()
+    else:
+        character_count = api.response.json().get("info").get("count")
+        assert character_count == number_of_characters
