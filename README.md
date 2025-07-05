@@ -1,6 +1,6 @@
 ## What is this project?
 
-A test automation web UI & API project using python, playwright & pytest. These tests currently interact with 3 websites - https://rickandmortyapi.com/, https://www.automationexercise.com/ & https://duckduckgo.com. It implements the "page object model" practice for code structure. 
+A test automation web UI & API project using python, playwright & pytest. These tests currently interact with 2 websites - https://rickandmortyapi.com/ & https://www.automationexercise.com/. It implements the "page object model" practice for code structure. It implements BDD (using `pytest-bdd`).
 
 ## Project setup
 
@@ -19,7 +19,8 @@ All the commands below are written to be run within cmd.
 
 To run the tests, run through the "project setup" section above and then run through the bullet points here.
 
-- All the tests are within the tests folder, to run all of them run `py -m pytest tests`. Alternatively to run the tests within one of the subfolders just run `py -m pytest tests\<subfolder_name>`
+- All the tests are within the `tests` folder, to run all of them run `py -m pytest tests`. Alternatively to run a subset of the tests you can easily run tests contained within one of the `test_...` files with `py -m pytest tests\<file_name>`
+  - Each `test_...` file imports scenarios from feature files using the `scenarios(...)` line it contains. View this line to understand which scenarios a `test_...` file "contains".
+  - `tests` contains one file for ui tests and one file for api tests
 - UI tests - By default, pytest runs the tests in headless mode, to run them in headed mode (and so to actually see the tests run in browser) run `python3 -m pytest tests --headed`
   - If you want to see the tests run slower to more easily see what they're doing then add the `--slowmo` argument to pause execution for 1 second (1000 ms) after each Playwright call. E.g. `python3 -m pytest tests --headed --slowmo 1000`
-- `tests\RickAndMorty` contains one file for ui tests and one file for api tests
