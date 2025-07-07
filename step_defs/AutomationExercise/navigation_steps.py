@@ -1,5 +1,7 @@
 from pytest_bdd import given, then
 
+from playwright.sync_api import Page
+
 from pages.AutomationExercise.homepage import AutomationExerciseHomepage
 
 @given("I navigate to the homepage")
@@ -17,5 +19,9 @@ def navigate_to_signup_login(ae_homepage: AutomationExerciseHomepage):
 
 @then("the homepage loads successfully")
 @then("I am returned to the homepage")
-def we_are_one_the_homepage(ae_homepage: AutomationExerciseHomepage):
+def verify_we_are_on_the_homepage(ae_homepage: AutomationExerciseHomepage):
     assert ae_homepage.page.title() == "Automation Exercise"
+
+@given("I navigate to the cart")
+def navigate_to_cart(page: Page) -> None:
+    page.get_by_role("link", name="Cart").click()
