@@ -1,8 +1,11 @@
 import pytest
 
 from pages.AutomationExercise.account_confirmation import AutomationExerciseAccountConfirmation
+from pages.AutomationExercise.cart import AutomationExerciseCart
+from pages.AutomationExercise.checkout import AutomationExerciseCheckout
 from pages.AutomationExercise.homepage import AutomationExerciseHomepage
 from pages.AutomationExercise.login import AutomationExerciseLogin
+from pages.AutomationExercise.payment import AutomationExercisePayment
 from pages.AutomationExercise.signup import AutomationExerciseSignup
 from pages.RickAndMorty.homepage import RickAndMortyHomepage
 from pages.RickAndMorty.documentation import RickAndMortyDocumentationPage
@@ -36,3 +39,15 @@ def ae_signup_page(page: Page) -> AutomationExerciseSignup:
 @pytest.fixture
 def ae_account_confirm_page(page: Page) -> AutomationExerciseAccountConfirmation:
     return AutomationExerciseAccountConfirmation(page)
+
+@pytest.fixture
+def ae_cart_page(page: Page) -> AutomationExerciseCart:
+    return AutomationExerciseCart(page)
+
+@pytest.fixture
+def ae_checkout_page(page: Page) -> AutomationExerciseCheckout:
+    return AutomationExerciseCheckout(page)
+
+@pytest.fixture
+def ae_payment_page(page: Page) -> AutomationExercisePayment:
+    return AutomationExercisePayment(page)

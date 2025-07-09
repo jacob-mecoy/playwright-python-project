@@ -33,6 +33,7 @@ def enter_remaining_signup_info(ae_signup_page: AutomationExerciseSignup):
 def create_new_user_account(ae_signup_page: AutomationExerciseSignup):
     ae_signup_page.create_account.click()
 
+@given("I sign in")
 @when("I sign in")
 def sign_in(ae_login_page: AutomationExerciseLogin):
     load_dotenv()
