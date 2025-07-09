@@ -8,3 +8,9 @@ class AutomationExerciseCart:
         self.page = page
         self.check_out = page.locator(".check_out")
     
+    def go_to_page_via_url(self):
+        self.page.goto(self.URL)
+
+    def clear_cart(self):
+        for locator in self.page.locator(".cart_quantity_delete").all():
+            locator.click()
