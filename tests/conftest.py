@@ -8,6 +8,8 @@ from pages.AutomationExercise.homepage import AutomationExerciseHomepage
 from pages.AutomationExercise.login import AutomationExerciseLogin
 from pages.AutomationExercise.modal import AutomationExerciseModal
 from pages.AutomationExercise.payment import AutomationExercisePayment
+from pages.AutomationExercise.product_details import AutomationExerciseProductDetails
+from pages.AutomationExercise.products import AutomationExerciseProducts
 from pages.AutomationExercise.signup import AutomationExerciseSignup
 from pages.RickAndMorty.homepage import RickAndMortyHomepage
 from pages.RickAndMorty.documentation import RickAndMortyDocumentationPage
@@ -57,6 +59,14 @@ def ae_payment_page(page: Page) -> AutomationExercisePayment:
 @pytest.fixture
 def ae_modal(page: Page) -> AutomationExerciseModal:
     return AutomationExerciseModal(page)
+
+@pytest.fixture
+def ae_products_page(page: Page) -> AutomationExerciseProducts:
+    return AutomationExerciseProducts(page)
+
+@pytest.fixture
+def ae_product_details_page(page: Page) -> AutomationExerciseProductDetails:
+    return AutomationExerciseProductDetails(page)
 
 def _scenario_setup() -> None:
     """Scenario setup."""

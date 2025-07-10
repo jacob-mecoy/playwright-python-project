@@ -7,6 +7,9 @@ class AutomationExerciseCart:
     def __init__(self, page: Page):
         self.page = page
         self.check_out = page.locator(".check_out")
+        # locators for inspecific products
+        self.product_descriptions = page.locator(".cart_description").get_by_role("link")
+        self.product_quantities = page.locator(".cart_quantity").get_by_role("button")
     
     def go_to_page_via_url(self):
         self.page.goto(self.URL)
