@@ -1,8 +1,9 @@
 from typing import Dict
+
 from playwright.sync_api import Page
 
-class RickAndMortyAPI:
 
+class RickAndMortyAPI:
     """Class containing api interactions for Rick And Morty website"""
 
     def __init__(self, page: Page) -> None:

@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
-class AutomationExercisePayment:
 
+class AutomationExercisePayment:
     URL = "https://www.automationexercise.com/payment"
 
     def __init__(self, page: Page):

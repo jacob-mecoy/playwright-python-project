@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
-class AutomationExerciseProductDetails:
 
+class AutomationExerciseProductDetails:
     def __init__(self, page: Page):
         self.page = page
         self.quantity_dropdown = page.locator("#quantity")

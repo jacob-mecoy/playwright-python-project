@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
-class RickAndMortyDocumentationPage:
 
+class RickAndMortyDocumentationPage:
     """Class containing page interactions for the Documentation page - https://rickandmortyapi.com/documentation"""
 
     def __init__(self, page: Page) -> None:

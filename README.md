@@ -24,3 +24,10 @@ To run the tests, run through the "project setup" section above and then run thr
   - `tests` contains one file for ui tests and one file for api tests
 - UI tests - By default, pytest runs the tests in headless mode, to run them in headed mode (and so to actually see the tests run in browser) run `python3 -m pytest tests --headed`
   - If you want to see the tests run slower to more easily see what they're doing then add the `--slowmo` argument to pause execution for 1 second (1000 ms) after each Playwright call. E.g. `python3 -m pytest tests --headed --slowmo 1000`
+
+## Linting and formatting
+
+Currently using ruff as both a linter and formatter. See https://docs.astral.sh/ruff/ for more information. We have a `pyproject.toml` file in the project root that contains some configuration for ruff.
+
+- Run the linter within cmd using the command `ruff check`
+- Run the formatter within cmd using the command `ruff format`
