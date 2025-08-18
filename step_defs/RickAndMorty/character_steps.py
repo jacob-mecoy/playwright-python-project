@@ -1,11 +1,13 @@
-from pytest_bdd import then
 from playwright.sync_api import expect
+from pytest_bdd import then
 
 from pages.RickAndMorty.homepage import RickAndMortyHomepage
+
 
 @then("there are 6 characters shown")
 def six_characters_shown(homepage_page: RickAndMortyHomepage):
     expect(homepage_page.character_cards).to_have_count(6)
+
 
 @then("the characters are all unique")
 def the_characters_are_all_unique(homepage_page: RickAndMortyHomepage):

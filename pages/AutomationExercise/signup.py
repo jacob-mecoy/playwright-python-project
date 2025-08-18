@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
-class AutomationExerciseSignup:
 
+class AutomationExerciseSignup:
     def __init__(self, page: Page):
         self.page = page
         self.gender = page.locator("#id_gender1")

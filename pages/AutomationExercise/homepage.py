@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
-class AutomationExerciseHomepage:
 
+class AutomationExerciseHomepage:
     URL = "https://www.automationexercise.com/"
 
     def __init__(self, page: Page):
@@ -13,6 +13,6 @@ class AutomationExerciseHomepage:
         self.signup_login_link = page.get_by_text("Signup / Login")
         self.cart_link = page.get_by_role("link", name="Cart")
         self.product_link = page.get_by_role("link", name="Products")
-    
+
     def load(self):
         self.page.goto(self.URL)
