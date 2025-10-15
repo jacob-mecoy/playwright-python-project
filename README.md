@@ -4,30 +4,96 @@ A test automation web UI & API project using python, playwright & pytest. These 
 
 ## Project setup
 
-All the commands below are written to be run within cmd.
+All the commands below are for Windows:
 
 - Your machine must have Python installed, ideally the latest version. Download the latest version of Python from Python.org.
-- Clone the project to your local device e.g. via SSH you can run `git clone git@github.com:jacob-mecoy/playwright-python-project.git` 
-- Move into the project directory - `cd playwright-python-project`
-- Create a virtual environment to manage the dependency packages locally - `py -m venv venv`
-- activate the virtual environment with `venv\Scripts\activate.bat`
-- Add required packages to your venv by running `pip install -r requirements.txt`
-- To download the browsers that Playwright can run tests with, run `playwright install`
+- Install Poetry by running in PowerShell (as admin):
+  ```powershell
+  (Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+  ```
+- Clone the project to your local device e.g. via SSH you can run: 
+  ```bash
+  git clone git@github.com:jacob-mecoy/playwright-python-project.git
+  ```
+- Move into the project directory:
+  ```bash
+  cd playwright-python-project
+  ```
+- Install dependencies:
+  ```bash
+  poetry install
+  ```
+- Activate Poetry shell (virtual environment):
+  ```bash
+  poetry env activate
+  ```
+- Install Playwright browsers:
+  ```bash
+  poetry run playwright install
+  ```
 - Some of the tests rely on importing environment variables. Therefore you will need to create a `.env` file in the project root with the required key:value pairs
+
+## Dependency Management
+
+### Installing Dependencies
+```powershell
+# Install dependencies from lock file (recommended)
+poetry install
+```
+
+### Updating Dependencies
+```powershell
+# Update specific package to latest version allowed in pyproject.toml
+poetry update package-name
+
+# Update all packages (use with caution)
+poetry update
+```
+
+### Checking Dependencies
+```powershell
+# Show currently installed versions
+poetry show
+
+# Show outdated packages
+poetry show --outdated
+```
+
+**Note**: Use `poetry install` for day-to-day development to ensure consistent dependencies. Only use `poetry update` when you intentionally want to upgrade packages to newer versions.
 
 ## Running the tests
 
-To run the tests, run through the "project setup" section above and then run through the bullet points here.
+To run the tests, run through the "project setup" section and follow the below:
 
-- All the tests are within the `tests` folder, to run all of them run `py -m pytest tests`. Alternatively to run a subset of the tests you can easily run tests contained within one of the `test_...` files with `py -m pytest tests\<file_name>`
+```bash
+# Run all tests
+poetry run pytest tests
+
+# Run specific test file
+poetry run pytest tests/<file_name>
+
+# Run UI tests in headed mode
+poetry run pytest tests --headed
+
+# Run tests with slower execution
+poetry run pytest tests --headed --slowmo 1000
+```
+
+### About the tests
+
+- All the tests are within the `tests` folder.
   - Each `test_...` file imports scenarios from feature files using the `scenarios(...)` line it contains. View this line to understand which scenarios a `test_...` file "contains".
-  - `tests` contains one file for ui tests and one file for api tests
-- UI tests - By default, pytest runs the tests in headless mode, to run them in headed mode (and so to actually see the tests run in browser) run `python3 -m pytest tests --headed`
-  - If you want to see the tests run slower to more easily see what they're doing then add the `--slowmo` argument to pause execution for 1 second (1000 ms) after each Playwright call. E.g. `python3 -m pytest tests --headed --slowmo 1000`
+  - `tests` contains one file for ui tests and one file for api tests.
+- UI tests - By default, pytest runs the tests in headless mode.
 
 ## Linting and formatting
 
 Currently using ruff as both a linter and formatter. See https://docs.astral.sh/ruff/ for more information. We have a `pyproject.toml` file in the project root that contains some configuration for ruff.
 
-- Run the linter within cmd using the command `ruff check`
-- Run the formatter within cmd using the command `ruff format`
+```bash
+# Run the linter
+poetry run ruff check
+
+# Run the formatter
+poetry run ruff format
+```
