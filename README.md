@@ -63,17 +63,37 @@ poetry show --outdated
 
 ## Running the tests
 
-To run the tests, run through the "project setup" section above and then run through the bullet points here.
+To run the tests, run through the "project setup" section and follow the below:
 
-- All the tests are within the `tests` folder, to run all of them run `poetry run pytest tests`. Alternatively to run a subset of the tests you can easily run tests contained within one of the `test_...` files with `poetry run pytest tests/<file_name>`
+```bash
+# Run all tests
+poetry run pytest tests
+
+# Run specific test file
+poetry run pytest tests/<file_name>
+
+# Run UI tests in headed mode
+poetry run pytest tests --headed
+
+# Run tests with slower execution
+poetry run pytest tests --headed --slowmo 1000
+```
+
+### About the tests
+
+- All the tests are within the `tests` folder.
   - Each `test_...` file imports scenarios from feature files using the `scenarios(...)` line it contains. View this line to understand which scenarios a `test_...` file "contains".
-  - `tests` contains one file for ui tests and one file for api tests
-- UI tests - By default, pytest runs the tests in headless mode, to run them in headed mode (and so to actually see the tests run in browser) run `poetry run pytest tests --headed`
-  - If you want to see the tests run slower to more easily see what they're doing then add the `--slowmo` argument to pause execution for 1 second (1000 ms) after each Playwright call. E.g. `poetry run pytest tests --headed --slowmo 1000`
+  - `tests` contains one file for ui tests and one file for api tests.
+- UI tests - By default, pytest runs the tests in headless mode.
 
 ## Linting and formatting
 
 Currently using ruff as both a linter and formatter. See https://docs.astral.sh/ruff/ for more information. We have a `pyproject.toml` file in the project root that contains some configuration for ruff.
 
-- Run the linter within cmd using the command `poetry run ruff check`
-- Run the formatter within cmd using the command `poetry run ruff format`
+```bash
+# Run the linter
+poetry run ruff check
+
+# Run the formatter
+poetry run ruff format
+```
