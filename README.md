@@ -31,6 +31,9 @@ All the commands below are for Windows:
   ```bash
   poetry run playwright install
   ```
+- You may need to install Visual C++ Build Tools (for installing the greenlet dependency)
+  Download "Build Tools for Visual Studio" from: https://visualstudio.microsoft.com/visual-cpp-build-tools/.
+  Run installer, check "C++ build tools" (include MSVC and Windows SDK), install.
 - Some of the tests rely on importing environment variables. Therefore you will need to create a `.env` file in the project root with the required key:value pairs
 
 ## Dependency Management
