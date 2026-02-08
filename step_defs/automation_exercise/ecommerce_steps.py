@@ -1,15 +1,15 @@
-from typing import Iterator
+from collections.abc import Iterator
 
 from playwright.sync_api import Page, expect
 from pytest_bdd import given, parsers, then, when
 
-from pages.AutomationExercise.cart import AutomationExerciseCart
-from pages.AutomationExercise.checkout import AutomationExerciseCheckout
-from pages.AutomationExercise.homepage import AutomationExerciseHomepage
-from pages.AutomationExercise.modal import AutomationExerciseModal
-from pages.AutomationExercise.payment import AutomationExercisePayment
-from pages.AutomationExercise.product_details import AutomationExerciseProductDetails
-from pages.AutomationExercise.products import AutomationExerciseProducts
+from pages.automation_exercise.cart import AutomationExerciseCart
+from pages.automation_exercise.checkout import AutomationExerciseCheckout
+from pages.automation_exercise.homepage import AutomationExerciseHomepage
+from pages.automation_exercise.modal import AutomationExerciseModal
+from pages.automation_exercise.payment import AutomationExercisePayment
+from pages.automation_exercise.product_details import AutomationExerciseProductDetails
+from pages.automation_exercise.products import AutomationExerciseProducts
 
 
 @given("I add a product to my basket")
@@ -75,8 +75,8 @@ def verify_invoice_can_be_downloaded(ae_payment_page: AutomationExercisePayment)
 def search_for_product(ae_products_page: AutomationExerciseProducts, product_name: str) -> None:
     ae_products_page.search_box.fill(product_name)
     ae_products_page.confirm_search.click()
-    # ToDo: alternatively we could create a data model for a product, which includes the id of the product
-    # and then use that id to identify that the correct product is displayed
+    # ToDo: alternatively we could create a data model for a product, which includes the id of the
+    # product and then use that id to identify that the correct product is displayed
     assert ae_products_page.product_items.count() == 1
 
 
@@ -89,7 +89,8 @@ def open_product_details_page(ae_products_page: AutomationExerciseProducts) -> N
 def confirm_basket_contains_quantity_of_product(
     ae_cart_page: AutomationExerciseCart, product_quantity: int, product_name: str
 ) -> None:
-    # ToDo: alternatively we could create a data model for a product, which includes the id of the product
-    # and then use that id to identify the row in the cart that contains the specified product
+    # ToDo: alternatively we could create a data model for a product, which includes the id of the
+    # product and then use that id to identify the row in the cart that contains the specified
+    # product
     expect(ae_cart_page.product_descriptions).to_have_text(product_name)
     expect(ae_cart_page.product_quantities).to_have_text(str(product_quantity))

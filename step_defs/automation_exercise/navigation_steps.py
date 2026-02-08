@@ -1,13 +1,17 @@
+import contextlib
+
 from pytest_bdd import given, then, when
 
-from pages.AutomationExercise.homepage import AutomationExerciseHomepage
-from pages.AutomationExercise.modal import AutomationExerciseModal
+from pages.automation_exercise.homepage import AutomationExerciseHomepage
+from pages.automation_exercise.modal import AutomationExerciseModal
 
 
 @given("I navigate to the homepage")
 def navigate_to_homepage(ae_homepage: AutomationExerciseHomepage):
     ae_homepage.load()
-    ae_homepage.consent.click()
+    # Consent button may not always be present; wait short timeout and ignore if not found
+    with contextlib.suppress(TimeoutError):
+        ae_homepage.consent.click(timeout=5000)  # short timeout to avoid long waits
 
 
 @given("I navigate to the signup login page")
