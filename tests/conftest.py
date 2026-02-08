@@ -1,21 +1,21 @@
-from typing import Iterator
+from collections.abc import Iterator
 
 import pytest
 from playwright.sync_api import Page
 
-from pages.AutomationExercise.account_confirmation import AutomationExerciseAccountConfirmation
-from pages.AutomationExercise.cart import AutomationExerciseCart
-from pages.AutomationExercise.checkout import AutomationExerciseCheckout
-from pages.AutomationExercise.homepage import AutomationExerciseHomepage
-from pages.AutomationExercise.login import AutomationExerciseLogin
-from pages.AutomationExercise.modal import AutomationExerciseModal
-from pages.AutomationExercise.payment import AutomationExercisePayment
-from pages.AutomationExercise.product_details import AutomationExerciseProductDetails
-from pages.AutomationExercise.products import AutomationExerciseProducts
-from pages.AutomationExercise.signup import AutomationExerciseSignup
-from pages.RickAndMorty.about import RickAndMortyAboutPage
-from pages.RickAndMorty.documentation import RickAndMortyDocumentationPage
-from pages.RickAndMorty.homepage import RickAndMortyHomepage
+from pages.automation_exercise.account_confirmation import AutomationExerciseAccountConfirmation
+from pages.automation_exercise.cart import AutomationExerciseCart
+from pages.automation_exercise.checkout import AutomationExerciseCheckout
+from pages.automation_exercise.homepage import AutomationExerciseHomepage
+from pages.automation_exercise.login import AutomationExerciseLogin
+from pages.automation_exercise.modal import AutomationExerciseModal
+from pages.automation_exercise.payment import AutomationExercisePayment
+from pages.automation_exercise.product_details import AutomationExerciseProductDetails
+from pages.automation_exercise.products import AutomationExerciseProducts
+from pages.automation_exercise.signup import AutomationExerciseSignup
+from pages.rick_and_morty.about import RickAndMortyAboutPage
+from pages.rick_and_morty.documentation import RickAndMortyDocumentationPage
+from pages.rick_and_morty.homepage import RickAndMortyHomepage
 
 
 @pytest.fixture

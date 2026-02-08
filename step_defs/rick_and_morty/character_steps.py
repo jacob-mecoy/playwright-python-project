@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
 from pytest_bdd import then
 
-from pages.RickAndMorty.homepage import RickAndMortyHomepage
+from pages.rick_and_morty.homepage import RickAndMortyHomepage
 
 
 @then("there are 6 characters shown")

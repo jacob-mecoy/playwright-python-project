@@ -1,9 +1,9 @@
 from playwright.sync_api import expect
 from pytest_bdd import given, then
 
-from pages.RickAndMorty.about import RickAndMortyAboutPage
-from pages.RickAndMorty.documentation import RickAndMortyDocumentationPage
-from pages.RickAndMorty.homepage import RickAndMortyHomepage
+from pages.rick_and_morty.about import RickAndMortyAboutPage
+from pages.rick_and_morty.documentation import RickAndMortyDocumentationPage
+from pages.rick_and_morty.homepage import RickAndMortyHomepage
 
 
 @given("I navigate to the homepage")

@@ -1,5 +1,3 @@
-from typing import Dict
-
 from playwright.sync_api import Page
 
 
@@ -17,5 +15,5 @@ class RickAndMortyAPI:
     def get_character_by_id(self, id: int) -> None:
         self.response = self.page.request.get(f"{self.url}/{id}")
 
-    def get_characters_with_params(self, params: Dict) -> None:
+    def get_characters_with_params(self, params: dict) -> None:
         self.response = self.page.request.get(self.url, params=params)

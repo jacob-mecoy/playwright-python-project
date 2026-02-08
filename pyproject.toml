@@ -48,13 +48,58 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-# Set the maximum line length.
+# Set the maximum line length (appropriate for readable test code)
 line-length = 100
+# Target Python 3.13+
+target-version = "py313"
+# Show all violations, even if disabled via ignore rules
+output-format = "grouped"
 
 [tool.ruff.lint]
-# Add the `line-too-long` rule to the enforced rule set.
-extend-select = ["E501"]
+# Comprehensive rule selection for test quality
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes (undefined names, unused imports)
+    "I",      # isort (import sorting)
+    "UP",     # pyupgrade (modern Python syntax)
+    "N",      # pep8-naming (naming conventions)
+    "ASYNC",  # flake8-async (async/await best practices)
+    "RET",    # flake8-return (return statement best practices)
+    "SIM",    # flake8-simplify (code simplification)
+    "PTH",    # pathlib (use pathlib instead of os.path)
+    "PERF",   # perflint (performance anti-patterns)
+]
+
+# Ignore rules that conflict with test patterns
+ignore = [
+    "E501",   # Line too long (handled by line-length)
+    "PTH123", # open() without pathlib (often OK in tests)
+    "SIM108", # Simplify if-else (can reduce readability in tests)
+]
 
 [tool.ruff.lint.per-file-ignores]
-# Ignore F403 in tests folder since we import all step definitions so pytest can register them
-"tests/*.py" = ["F403"]
+# Test-specific ignores
+"tests/*.py" = [
+    "F403",    # Undefined import * (pytest fixtures, BDD imports)
+    "F401",    # Unused import (BDD step registration, fixtures)
+]
+"step_defs/**/*.py" = [
+    "F401",    # Unused import (BDD decorators register functions)
+    "SIM300",  # Simplify if-else (can impact readability)
+]
+"conftest.py" = [
+    "F401",    # Unused import (pytest fixtures)
+]
+
+[tool.ruff.lint.isort]
+# Proper import organization
+known-first-party = ["pages", "step_defs", "features"]
+known-third-party = ["playwright", "pytest", "pytest_bdd"]
+
+[tool.ruff.lint.pep8-naming]
+# Allow test-specific naming
+extend-ignore-names = [
+    "ae_*",    # AutomationExercise fixture/variable prefix
+    "Page",    # Playwright Page class
+]

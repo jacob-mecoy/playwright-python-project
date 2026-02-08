@@ -6,10 +6,10 @@ from dotenv import load_dotenv
 from playwright.sync_api import expect
 from pytest_bdd import given, then, when
 
-from pages.AutomationExercise.account_confirmation import AutomationExerciseAccountConfirmation
-from pages.AutomationExercise.homepage import AutomationExerciseHomepage
-from pages.AutomationExercise.login import AutomationExerciseLogin
-from pages.AutomationExercise.signup import AutomationExerciseSignup
+from pages.automation_exercise.account_confirmation import AutomationExerciseAccountConfirmation
+from pages.automation_exercise.homepage import AutomationExerciseHomepage
+from pages.automation_exercise.login import AutomationExerciseLogin
+from pages.automation_exercise.signup import AutomationExerciseSignup
 
 first_name = "FirstName"
 last_name = "LastName"

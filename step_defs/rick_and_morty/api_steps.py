@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import Page, expect
 from pytest_bdd import given, parsers, then
 
-from pages.RickAndMorty.api import RickAndMortyAPI
+from pages.rick_and_morty.api import RickAndMortyAPI
 
 
 @pytest.fixture
@@ -41,7 +41,7 @@ def verify_character_count(api: RickAndMortyAPI, number_of_characters: int):
     response_json = api.response.json()
     if number_of_characters == 1:
         assert isinstance(response_json, dict)
-        assert "info" not in response_json.keys()
+        assert "info" not in response_json
     else:
         response_character_count = response_json.get("info", {}).get("count")
         assert response_character_count == number_of_characters

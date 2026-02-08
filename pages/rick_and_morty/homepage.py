@@ -1,5 +1,3 @@
-from typing import List
-
 from playwright.sync_api import Page
 
 
@@ -19,7 +17,7 @@ class RickAndMortyHomepage:
     def load(self) -> None:
         self.page.goto(self.URL)
 
-    def retrieve_character_card_ids(self) -> List[str]:
+    def retrieve_character_card_ids(self) -> list[str]:
         character_card_locator_list = [self.character_cards.nth(x) for x in range(6)]
         character_name_link_list = [
             x.get_by_role("link").nth(0) for x in character_card_locator_list
