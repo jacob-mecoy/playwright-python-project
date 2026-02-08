@@ -93,6 +93,8 @@ poetry run pytest tests --headed --slowmo 1000
 
 Currently using ruff as both a linter and formatter. See https://docs.astral.sh/ruff/ for more information. We have a `pyproject.toml` file in the project root that contains some configuration for ruff.
 
+This project also uses the pre-commit (https://pre-commit.com/) library which forces hooks to be run on git commit. We have added hooks for ruff (using ruff-pre-commit - https://github.com/astral-sh/ruff-pre-commit) for both linting and formatting.
+
 ```bash
 # Run the linter
 poetry run ruff check
