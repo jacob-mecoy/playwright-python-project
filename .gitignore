@@ -6,5 +6,6 @@
 venv/
 
 test-results/
+test_artifacts/
 
 .env
